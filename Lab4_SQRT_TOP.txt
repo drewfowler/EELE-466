@@ -1,0 +1,12 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity Lab4_SQRT_TOP is
+    port (
+        clk        : in  std_logic;
+        lzc_vector : in  std_logic_vector (31 downto 0);
+        lzc_count  : out std_logic_vector ( 4 downto 0)
+    );
+end Lab4_SQRT_TOP;
