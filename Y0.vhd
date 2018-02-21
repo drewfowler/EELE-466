@@ -18,8 +18,11 @@ architecture Y0_arch of Y0 is
 	signal alpha	: signed(35 downto 0); --Alpha
 	signal check	: std_logic; --1 if beta is even, 0 if beta is odd
 	signal plus		: std_logic; --1 is negative, 0 is positive
+	signal Xa		: signed(7 downto 0);
+	signal Xa		: signed(7 downto 0);
+	signal Xb_look	: signed(7 downto 0);
 	
-	constant W	: std_logic_vector(7 downto 0) := "00010001"; --17
+	--constant W	: std_logic_vector(7 downto 0) := "00010001"; --17
 	--constant F	: std_logic_vector(7 downto 0) := "00010010"; --18
 	
 
@@ -30,6 +33,13 @@ architecture Y0_arch of Y0 is
         lzc_count  : out std_logic_vector ( 5 downto 0));
 	end component;
 	
+	component ROM_inst
+		port
+		(
+			address		: IN STD_LOGIC_VECTOR (5 DOWNTO 0);
+			clock		: IN STD_LOGIC  := '1';
+			q		: OUT STD_LOGIC_VECTOR (11 DOWNTO 0));
+	end component;
 	
 
 begin
@@ -40,8 +50,15 @@ begin
 		Z		=> lzc_count
 	);
 	
+	ROM_inst : ROM PORT MAP (
+		address	 => address_sig,
+		clock	 => clk,
+		q	 => Xb_look
+	);
+	
 	CALC_GUESS : process (rising_edge(clk))
-		variable beta0,beta1	: std_logic_vector
+	
+		variable beta0,beta1	: signed(7 downto 0);
 	begin
 		--Calc Beta
 		beta <= 17 - signed(Z);
@@ -72,12 +89,26 @@ begin
 		
 	
 		--Alpha calc if even or odd
-		if(check = '1')
-			alpha <= ---2 * beta + 0.5 * beta
-		else
-			alpha <= 
+		if(check = '1') --Even
+			alpha <= beta0 + beta1; ---2 * beta + 0.5 * beta
+		else			--Odd
+			alpha <= beta0 + beta1 + 0.5;
+		
+		--Calc Xa
+			--What if alpha has decimals
+			--Round to nearest int?
+		
+		--Calc Xb
 		
 		
+		--Calc Guess
+		if(check = '1') --Even
+			y_out <= Xa * Xb_look;
+		else			--Odd
+			y_out <= Xa * Xb * 0.707;
+		
+		
+	end process;
 	
 	
 
