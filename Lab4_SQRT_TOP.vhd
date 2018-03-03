@@ -5,15 +5,15 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity Lab4_SQRT_TOP is
     port (
-        clk     : in  std_logic;
+        	clk     : in  std_logic;
 		x		: in std_logic_vector(35 downto 0); --W=36 and F=18
-		y		: out std_logic_vector(35 downto 0);  
+		y		: out std_logic_vector(35 downto 0)
     );
 end Lab4_SQRT_TOP;
 
 architecture Lab4_SQRT_TOP_arch of Lab4_SQRT_TOP is
 
-	signal y0 : std_logic_vector(35 downto 0); --Guess Output
+	signal guess : std_logic_vector(35 downto 0); --Guess Output
 	
 	
 	component Y0
@@ -34,15 +34,15 @@ begin
 	
 	G0 : Y0 PORT MAP (
 		clk 	=> clk,
-		x 		=> x_in,
-		y0		=> y_out
+		x_in 		=> x,
+		y_out		=> guess
 	);
 	
 	N0 : Newton PORT MAP (
 		clk 	=> clk,
-		x		=> x_in,
-		y0 		=> y_in,
-		y		=> y_out
+		x_in		=> x,
+		y_in 		=> guess,
+		y_out		=> y
 	);
 		
 

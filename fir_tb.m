@@ -26,82 +26,29 @@ Sub = {0 0 0 0 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0};
 Sum = fi(0,1,8,0);
 Cout = fi(0,0,1,0);
 
-%output_history = {9 -5 3 -9 1 9 -9 -7 0 0 0 0};
+X = fi(5,0,36,18);
+Y = fi(0,0,36,18);
+clk = fi(0,0,1,0);
 
-%Loop creates Fixed point arrays
-for i=1:Array_size
+
+
+
+
+
+    Y = step(fir_tb,clk,X);
     
-    fixed_word_width     = 8;  % width of input to component
-    fixed_point_value    = A_array{i};  % choose a random input values over an appropriate range
-    fixed_point_signed   = 1;  % unsiged = 0, signed = 1;
-    fixed_point_fraction = 0;  % fraction width (location of binary point within word)
-    A_FI_array{i} = fi(fixed_point_value, 1, 8, 0); % make the input a fixed point data type 
-    
-    fixed_word_width     = 8;  % width of input to component
-    fixed_point_value    = B_array{i};  % choose a random input values over an appropriate range
-    fixed_point_signed   = 1;  % unsiged = 0, signed = 1;
-    fixed_point_fraction = 0;  % fraction width (location of binary point within word)
-    B_FI_array{i} = fi(fixed_point_value, 1, 8, 0); % make the input a fixed point data type 
-
-    fixed_word_width     = 1;  % width of input to component
-    fixed_point_value    = Sub{i};  % choose a random input values over an appropriate range
-    fixed_point_signed   = 0;  % unsiged = 0, signed = 1;
-    fixed_point_fraction = 0;  % fraction width (location of binary point within word)
-    Sub_FI_array{i} = fi(fixed_point_value, 0, 1, 0); % make the input a fixed point data type
-end
-
-% A = fi(3,1,8,0);
-B = fi(5,1,8,0);
-subtract = fi(0,0,1,0);
-% 
-% Azero = fi(0,1,8,0);
-% Bzero = fi(0,1,8,0);
-% 
-% 
-% [Sum,Cout] = step(fir_tb,Azero,Bzero,subtract);
-% [Sum,Cout] = step(fir_tb,Azero,Bzero,subtract);
-% [Sum,Cout] = step(fir_tb,Azero,Bzero,subtract);
-% [Sum,Cout] = step(fir_tb,Azero,Bzero,subtract);
-% [Sum,Cout] = step(fir_tb,Azero,Bzero,subtract);
-% [Sum,Cout] = step(fir_tb,Azero,Bzero,subtract);
-% [Sum,Cout] = step(fir_tb,Azero,Bzero,subtract);
-% [Sum,Cout] = step(fir_tb,Azero,Bzero,subtract);
-
-
-
-
 
 
 for clki=1:Nclock_edges
-    %-----------------------------------------------------------------
-    % Create our input vector at each clock edge, which must be a
-    % fixed-point data type.  The word width of the fixed point data type
-    % must match the width of the std_logic_vector input.
-    %-----------------------------------------------------------------
-%     fixed_word_width     = 8;  % width of input to component
-%     fixed_point_value    = 5;     % choose a random input values over an appropriate range
-%     fixed_point_signed   = 1;  % unsiged = 0, signed = 1;
-%     fixed_point_fraction = 0;  % fraction width (location of binary point within word)
-%     input_vector1 = fi(fixed_point_value, fixed_point_signed, fixed_word_width, fixed_point_fraction); % make the input a fixed point data type
-%     input_history{clki} = input_vector1;  % capture the inputs
     
-    %-----------------------------------------------------------------
-    % Push the input(s) into the component using the step function on the
-    % system object fir_hdl
-    % If there are multiple I/O, use
-    % [out1, out2, out3] = step(fir_hdl, in1, in2, in3);
-    % and understand all I/O data types are fixed-point objects
-    % where the inputs can be created by the fi() function.
-    %-----------------------------------------------------------------
-    %[Sum,Cout] = step(fir_tb,A_FI_array{clki},B_FI_array{clki},Sub_FI_array{clki});
-    [Sum,Cout] = step(fir_tb,A_FI_array{clki},B_FI_array{clki},Sub_FI_array{clki});
+    Y = step(fir_tb,clk,X);
     
+    if clk == 0
+        clk = 1;
+    else 
+        clk == 0;
     
-    
-    %-----------------------------------------------------------------
-    % Save the outputs (which are fixed-point objects)
-    %-----------------------------------------------------------------
-    output_history{clki} = Sum;  % capture the output
+  
     
 end
 %-----------------------------------------------------------------
@@ -121,7 +68,7 @@ end
 % Perform the desired comparison (with the latency between input
 % and output appropriately corrected).
 %-----------------------------------------------------------------
-latency     = 2;  % latency in clock cycles through the component
+latency     = 0;  % latency in clock cycles through the component
 j = 0;
 error_index = 0;
 error_case  = {};
@@ -131,18 +78,32 @@ for clki=1:Nclock_edges-latency
     %------------------------------------------------------
     % Perfom the comparison with the "true" output
     %------------------------------------------------------
-    if Sub_FI_array{clki} == 0
-        in1 = A_FI_array{clki} + B_FI_array{clki};
-    else
-        in1 = A_FI_array{clki} - B_FI_array{clki};
-    end
     
-    if out1 == in1
-        
-    else 
-        error_index = error_index + 1;
-        error_case = clki;
-    end
+    binary = bin(X);
+    count = 0; 
+    beta = 0;
+    alpha = 0; 
+    Xa = 0;
+    Xb = 0;
+    %Counts zeros
+    for a = 1:37
+        if binary(a:a) == '0'
+            count = count + 1;
+        else 
+        end 
+    end 
+    
+    beta = 17 - count;
+    
+    if binary(37:37) == '0'
+         alpha = -2 * beta + 0.5 * beta + 0.5;
+    end  
+    if binary(37:37) == '1'
+         alpha = -2 * beta + 0.5 * beta;
+    end 
+    
+    
+    
     
 end
 
