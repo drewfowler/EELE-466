@@ -25,9 +25,13 @@ architecture Y0_arch of Y0 is
 	signal address_sig	: STD_LOGIC_VECTOR (5 DOWNTO 0);
 	signal y_out_sig	: signed(35 downto 0);
 	
+	signal beta0	: signed(11 downto 0);
+	signal beta1	: signed(5 downto 0);
+	---signal test0	: signed(11 downto 0);
+	
 	constant a	: signed(35 downto 0) := "000000000000000000101101001111111000";
 	constant half	: signed(35 downto 0) := "000000000000000000100000000000000000";
-
+	constant negtwo	: signed(5 downto 0)  := "111110";
 	
 
 
@@ -63,8 +67,10 @@ begin
 	
 	CALC_GUESS : process (clk)
 	
-		variable beta0,beta1	: signed(35 downto 0);
-		
+		--variable beta0,beta1	: signed(35 downto 0);
+		--variable beta1	: signed(35 downto 0);
+		--variable beta0  : signed(11 downto 0);
+	
 	begin
 		--Calc Beta
 		beta <= 17 - signed(Z);
@@ -78,49 +84,57 @@ begin
 
 		--Checks if beta is positive or negative
 		if(beta(5) = '1') then
-			plus <= '1';
+			plus <= '1'; --negative
 		else
-			plus <= '0';
+			plus <= '0'; --positive
 		end if;
-			
+		
+		--beta <= to_signed(15,6);
+		
+		--beta0 <= "000000000000000000000000000000" & shift_right(beta, 1);-- -2*beta
+		
+		--beta <= SHIFT_LEFT(beta,1);-- -2*beta
+		
+		--beta0 <= (beta * negtwo);
 		--Calc Alpha
 		--We need to check which way to shift according to if beta is positive or negative
 		if(plus = '1') then --negative
-			beta0 := shift_right(beta, 1);-- -2*beta
-			beta1 := shift_right(beta, 1);-- 0.5*beta
+			beta0 <= (beta * negtwo);-- -2*beta
+			beta1 <= SHIFT_RIGHT(beta, 1);-- 0.5*beta
 		else			--positive
-			beta0 := shift_left(beta, 1);-- -2*beta
-			beta1 := shift_left(beta, 1);-- 0.5*beta
+			beta0 <= (beta * negtwo);-- -2*beta
+			beta1 <= SHIFT_RIGHT(beta, 1);-- 0.5*beta
 		end if;
 		
 	
-		--Alpha calc if even or odd
-		if(check = '1') then --Even
-			alpha <= beta0 + beta1; ---2 * beta + 0.5 * beta
-		--else			--Odd
-			alpha <= beta0 + beta1 + half;
-		end if;
-		--Calc Xa
-			--What if alpha has decimals
-			--Round to nearest int?
-			Xa <= SHIFT_RIGHT(signed(x_in), to_integer(alpha));
-		--Calc Xb
-			Xb <= SHIFT_RIGHT(signed(x_in), to_integer(beta));
+		-- --Alpha calc if even or odd
+		-- if(check = '1') then --Even
+			-- alpha <= beta0 + beta1; ---2 * beta + 0.5 * beta
+		-- --else			--Odd
+			-- alpha <= beta0 + beta1 + half;
+		-- end if;
+		
+		-- --Calc Xa
+			-- --What if alpha has decimals
+			-- --Round to nearest int?
+			-- Xa <= SHIFT_RIGHT(signed(x_in), to_integer(alpha));
+		-- --Calc Xb
+			-- Xb <= SHIFT_RIGHT(signed(x_in), to_integer(beta));
 		
 		
-		--Calc Lookup
-		address_sig <= std_logic_vector(Xb(15 downto 10));
+		-- --Calc Lookup
+		-- address_sig <= std_logic_vector(Xb(15 downto 10));
 		
 		
-		--Calc Guess
-		if(check = '1') then--Even
-			y_out_sig <= Xa * signed(Xb_look);
-		else			--Odd
-			y_out_sig <= Xa * Xb * a;
-		end if;
+		-- --Calc Guess
+		-- if(check = '1') then--Even
+			-- y_out_sig <= Xa * signed(Xb_look);
+		-- else			--Odd
+			-- y_out_sig <= Xa * Xb * a;
+		-- end if;
 		
-		--Answer
-		y_out <= std_logic_vector(y_out_sig);
+		-- Answer
+		-- y_out <= std_logic_vector(y_out_sig);
 
 	end process;
 

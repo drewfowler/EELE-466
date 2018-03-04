@@ -1,82 +1,52 @@
-{C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/Y0.vhd} {0 {vcom -work work -2002 -explicit -stats=none {C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/Y0.vhd}
+C:/Users/h92j874/Desktop/Newton.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/h92j874/Desktop/Newton.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity Newton
+-- Compiling architecture Newton_arch of Newton
 
-} {} {}} {C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/Lab4_SQRT_TOP.vhd} {0 {vcom -work work -2002 -explicit -stats=none {C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/Y0.vhd}
+} {} {}} C:/Users/h92j874/Desktop/Y0.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/h92j874/Desktop/Y0.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package STD_LOGIC_SIGNED
+-- Loading package NUMERIC_STD
+-- Compiling entity Y0
+-- Compiling architecture Y0_arch of Y0
 
-} {} {}} {C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/Newton.vhd} {0 {vcom -work work -2002 -explicit -stats=none {C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/Y0.vhd}
+} {} {}} C:/Users/h92j874/Desktop/lzc.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/h92j874/Desktop/lzc.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
-** Warning: (vcom-6) -- Waiting for lock by "h92j874@PUGET, pid = 2244
-". Lockfile is "C:/Users/h92j874/Dropbox/School/EELE 466/Lab4/work/_lock".
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity lzc
+-- Compiling architecture behavioral of lzc
+
+} {} {}} C:/Users/h92j874/Desktop/ROM.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/h92j874/Desktop/ROM.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package altera_mf_components
+-- Compiling entity ROM
+-- Compiling architecture SYN of rom
+
+} {} {}} C:/Users/h92j874/Desktop/Lab4_SQRT_TOP.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/h92j874/Desktop/Lab4_SQRT_TOP.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity Lab4_SQRT_TOP
+-- Compiling architecture Lab4_SQRT_TOP_arch of Lab4_SQRT_TOP
 
 } {} {}}
