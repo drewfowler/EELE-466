@@ -16,7 +16,7 @@ architecture Y0_arch of Y0 is
 
 	signal Z		: std_logic_vector(5 downto 0); --lzc_count
 	signal beta		: signed(5 downto 0); --Beta
-	signal alpha	: signed(35 downto 0); --Alpha
+	signal alpha	: signed(11 downto 0); --Alpha
 	signal check	: std_logic; --1 if beta is even, 0 if beta is odd
 	signal plus		: std_logic; --1 is negative, 0 is positive
 	signal Xa		: signed(35 downto 0);
@@ -106,20 +106,20 @@ begin
 			beta1 <= SHIFT_RIGHT(beta, 1);-- 0.5*beta
 		end if;
 		
-	
-		-- --Alpha calc if even or odd
-		-- if(check = '1') then --Even
-			-- alpha <= beta0 + beta1; ---2 * beta + 0.5 * beta
-		-- --else			--Odd
-			-- alpha <= beta0 + beta1 + half;
-		-- end if;
 		
-		-- --Calc Xa
-			-- --What if alpha has decimals
-			-- --Round to nearest int?
-			-- Xa <= SHIFT_RIGHT(signed(x_in), to_integer(alpha));
-		-- --Calc Xb
-			-- Xb <= SHIFT_RIGHT(signed(x_in), to_integer(beta));
+		--Alpha calc if even or odd
+		if(check = '1') then --Even
+			alpha <= beta0 + beta1; ---2 * beta + 0.5 * beta
+		--else			--Odd
+			--alpha <= beta0 + beta1 + half;
+		end if;
+		
+		--Calc Xa
+			--What if alpha has decimals
+			--Round to nearest int?
+			Xa <= SHIFT_LEFT(signed(x_in), to_integer(alpha));
+		--Calc Xb
+			Xb <= SHIFT_LEFT(signed(x_in), to_integer(beta));
 		
 		
 		-- --Calc Lookup
