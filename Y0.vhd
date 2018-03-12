@@ -119,22 +119,23 @@ begin
 			--Round to nearest int?
 			Xa <= SHIFT_LEFT(signed(x_in), to_integer(alpha));
 		--Calc Xb
-			Xb <= SHIFT_LEFT(signed(x_in), to_integer(beta));
+			Xb <= SHIFT_LEFT(signed(x_in), to_integer(-beta));
 		
 		
 		-- --Calc Lookup
-		-- address_sig <= std_logic_vector(Xb(15 downto 10));
+--		address_sig <= "001000";
+		address_sig <= std_logic_vector(Xb(15 downto 10));
 		
 		
 		-- --Calc Guess
-		-- if(check = '1') then--Even
-			-- y_out_sig <= Xa * signed(Xb_look);
-		-- else			--Odd
-			-- y_out_sig <= Xa * Xb * a;
-		-- end if;
+		if(check = '1') then--Even
+			y_out_sig <= Xa * signed(Xb_look);
+		else			--Odd
+			y_out_sig <= Xa * Xb * a;
+		end if;
 		
 		-- Answer
-		-- y_out <= std_logic_vector(y_out_sig);
+		y_out <= std_logic_vector(y_out_sig);
 
 	end process;
 
