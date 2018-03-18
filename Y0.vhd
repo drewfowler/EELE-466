@@ -16,14 +16,14 @@ architecture Y0_arch of Y0 is
 
 	signal Z		: std_logic_vector(5 downto 0); --lzc_count
 	signal beta		: signed(5 downto 0); --Beta
-	signal alpha	: signed(11 downto 0); --Alpha
+	signal alpha	: signed(35 downto 0); --Alpha
 	signal check	: std_logic; --1 if beta is even, 0 if beta is odd
 	signal plus		: std_logic; --1 is negative, 0 is positive
 	signal Xa		: signed(35 downto 0);
 	signal Xb		: signed(35 downto 0);
 	signal Xb_look	: STD_LOGIC_VECTOR (11 DOWNTO 0);
 	signal address_sig	: STD_LOGIC_VECTOR (5 DOWNTO 0);
-	signal y_out_sig	: signed(35 downto 0);
+	signal y_out_sig	: signed(107 downto 0);
 	
 	signal beta0	: signed(11 downto 0);
 	signal beta1	: signed(5 downto 0);
@@ -49,7 +49,8 @@ architecture Y0_arch of Y0 is
 			clock		: IN STD_LOGIC  := '1';
 			q		: OUT STD_LOGIC_VECTOR (11 DOWNTO 0));
 	end component;
-	
+
+
 
 begin
 
@@ -64,6 +65,7 @@ begin
 		clock	 => clk,
 		q	 => Xb_look
 	);
+
 	
 	CALC_GUESS : process (clk)
 	
@@ -109,9 +111,9 @@ begin
 		
 		--Alpha calc if even or odd
 		if(check = '1') then --Even
-			alpha <= beta0 + beta1; ---2 * beta + 0.5 * beta
-		--else			--Odd
-			--alpha <= beta0 + beta1 + half;
+			alpha <= "000000000000000000000000" & (beta0 + beta1); ---2 * beta + 0.5 * beta
+		else			--Odd
+			alpha <= ("000000000000000000000000" & (beta0 + beta1)) + half;
 		end if;
 		
 		--Calc Xa
@@ -129,13 +131,13 @@ begin
 		
 		-- --Calc Guess
 		if(check = '1') then--Even
-			y_out_sig <= Xa * signed(Xb_look);
+			y_out_sig <= "000000000000000000000000000000000000000000000000000000000000" & (Xa * signed(Xb_look));
 		else			--Odd
 			y_out_sig <= Xa * Xb * a;
 		end if;
 		
 		-- Answer
-		y_out <= std_logic_vector(y_out_sig);
+		y_out <= std_logic_vector(y_out_sig(35 downto 0));
 
 	end process;
 

@@ -37,7 +37,7 @@ Clk_process :process
         wait for CLK_PERIOD/2;  --for next half of clock period clk stays at '1'.
    end process;
 
-	x_TB <= "000000000000000001000000010000000011";
+	x_TB <= "000000000000000000000100010000000011";
 		
     --Stimulus Generation
 	
