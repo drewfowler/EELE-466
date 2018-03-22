@@ -18,10 +18,10 @@ architecture Newton_arch of Newton is
 	type State_Type is (iteration,calculate,finish);
 	signal current_state, next_state : State_Type;
 
-	signal done	: std_logic;
-	signal answer	: signed(35 downto 0);
 	signal top	: signed(143 downto 0);
-	signal count 	: integer;
+	
+	signal top0		: signed(71 downto 0);
+	signal top1		: signed(143 downto 0);
 	
 	constant three	: signed(35 downto 0) := "000000000000000000000000000000000011";
 	constant one	: signed(35 downto 0) := "000000000000000000000000000000000001";
@@ -30,51 +30,18 @@ architecture Newton_arch of Newton is
 
 begin
 
-	STATE_MEMORY : process(clk)
-		begin	
-			current_state <= next_state;
+	
+	TOP_PART : process(clk)
+		begin
+			top0 <= signed(y_in) * three;
+			top1 <= signed(y_in)* (signed(x_in) * ( signed(y_in) * signed(y_in) ));
 	end process;
 	
-	NEXT_STATE_LOGIC : process(current_state)
+	BOTTOM_PART	: process(clk)
 		begin
-			case(current_state) is
-				when iteration =>	if (count = stop) then
-										next_state <= finish;
-										--count <= 0;
-									else
-										next_state <= calculate;
-									end if;
+			top <= SHIFT_RIGHT((top0 - top1),1);
+	end process;
 									
-				when calculate =>   next_state <= iteration;
-				
-				when finish => 		if(done = '0') then
-										next_state <= iteration;
-									else
-										next_state <= finish;
-									end if;
-				when others =>		next_state <= iteration;
-			end case;
-	end process;
-	
-	OUTPUT_LOGIC : process(current_state)
-		begin
-			case(current_state) is
-				when iteration => count <= count + 1;
-						
-				when calculate => --equation
-								count <= 0;
-								 -- top <= answer * (three - (x_in*(answer*answer)));
- 								answer <= answer * (three - (signed(x_in) *(answer*answer)));
-								answer <= SHIFT_RIGHT(answer, 1);
-								--answer <= top(35 downto 0);
-				
-				when finish => y_out <= std_logic_vector(answer);
-
-				when others => y_out <= zero;
-			end case;
-	end process;
-			
-
+	y_out <= std_logic_vector(top(89 downto 54));
 
 end architecture;
-

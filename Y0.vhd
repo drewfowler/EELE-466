@@ -15,23 +15,34 @@ end Y0;
 architecture Y0_arch of Y0 is
 
 	signal Z		: std_logic_vector(5 downto 0); --lzc_count
-	signal beta		: signed(5 downto 0); --Beta
-	signal alpha	: signed(35 downto 0); --Alpha
+	
+	signal beta		: signed(6 downto 0); --Beta
+	signal beta_int	: signed(5 downto 0);
+	signal alpha	: signed(6 downto 0); --Alpha
+	
 	signal check	: std_logic; --1 if beta is even, 0 if beta is odd
 	signal plus		: std_logic; --1 is negative, 0 is positive
-	signal Xa		: signed(35 downto 0);
-	signal Xb		: signed(35 downto 0);
+	signal Xa		: unsigned(35 downto 0);
+	signal Xb		: unsigned(35 downto 0);
+	signal Xb_int	: std_logic_vector(35 downto 0);
+	
 	signal Xb_look	: STD_LOGIC_VECTOR (11 DOWNTO 0);
 	signal address_sig	: STD_LOGIC_VECTOR (5 DOWNTO 0);
 	signal y_out_sig	: signed(107 downto 0);
 	
 	signal beta0	: signed(11 downto 0);
 	signal beta1	: signed(5 downto 0);
-	---signal test0	: signed(11 downto 0);
+	
+	signal y0_middle	: unsigned(71 downto 0);
+	signal y0_int		: unsigned(35 downto 0);
+	signal y0_next		: unsigned(71 downto 0);
+	signal y0_out_guess		: unsigned(35 downto 0);
+	signal roottwo		: unsigned(35 downto 0) := "000000000000000000101101010000010100";
 	
 	constant a	: signed(35 downto 0) := "000000000000000000101101001111111000";
 	constant half	: signed(35 downto 0) := "000000000000000000100000000000000000";
 	constant negtwo	: signed(5 downto 0)  := "111110";
+	
 	
 
 
@@ -42,7 +53,7 @@ architecture Y0_arch of Y0 is
         lzc_count  : out std_logic_vector ( 5 downto 0));
 	end component;
 	
-	component ROM_inst
+	component ROM
 		port
 		(
 			address		: IN STD_LOGIC_VECTOR (5 DOWNTO 0);
@@ -60,7 +71,7 @@ begin
 		lzc_count	=> Z
 	);
 	
-	ROM_inst_0 : ROM_inst PORT MAP (
+	ROM_inst_0 : ROM PORT MAP (
 		address	 => address_sig,
 		clock	 => clk,
 		q	 => Xb_look
@@ -75,7 +86,8 @@ begin
 	
 	begin
 		--Calc Beta
-		beta <= 17 - signed(Z);
+		beta_int <= 17 - signed(Z);
+		beta <= beta_int(5) & beta_int(5 downto 0);
 		
 		--Checking if Beta is even or odd
 		if(beta(0) = '1') then
@@ -91,53 +103,57 @@ begin
 			plus <= '0'; --positive
 		end if;
 		
-		--beta <= to_signed(15,6);
 		
-		--beta0 <= "000000000000000000000000000000" & shift_right(beta, 1);-- -2*beta
-		
-		--beta <= SHIFT_LEFT(beta,1);-- -2*beta
-		
-		--beta0 <= (beta * negtwo);
 		--Calc Alpha
 		--We need to check which way to shift according to if beta is positive or negative
-		if(plus = '1') then --negative
-			beta0 <= (beta * negtwo);-- -2*beta
-			beta1 <= SHIFT_RIGHT(beta, 1);-- 0.5*beta
-		else			--positive
-			beta0 <= (beta * negtwo);-- -2*beta
-			beta1 <= SHIFT_RIGHT(beta, 1);-- 0.5*beta
-		end if;
+		-- if(plus = '1') then --negative
+			-- beta0 <= (beta * negtwo);-- -2*beta
+			-- beta1 <= SHIFT_RIGHT(beta, 1);-- 0.5*beta
+		-- else			--positive
+			-- beta0 <= (beta * negtwo);-- -2*beta
+			-- beta1 <= SHIFT_RIGHT(beta, 1);-- 0.5*beta
+		-- end if;
 		
 		
 		--Alpha calc if even or odd
 		if(check = '1') then --Even
-			alpha <= "000000000000000000000000" & (beta0 + beta1); ---2 * beta + 0.5 * beta
+			alpha <= shift_right(beta,1) - shift_left(beta,1);
 		else			--Odd
-			alpha <= ("000000000000000000000000" & (beta0 + beta1)) + half;
+			alpha <= shift_right((beta + "0000001"),1) - shift_left(beta,1);
 		end if;
 		
 		--Calc Xa
 			--What if alpha has decimals
 			--Round to nearest int?
-			Xa <= SHIFT_LEFT(signed(x_in), to_integer(alpha));
+			Xa <= SHIFT_LEFT(unsigned(x_in), to_integer(alpha));
 		--Calc Xb
-			Xb <= SHIFT_LEFT(signed(x_in), to_integer(-beta));
+			Xb <= SHIFT_LEFT(unsigned(x_in), to_integer(-beta));
+		
+		Xb_int <= std_logic_vector(Xb);
 		
 		
 		-- --Calc Lookup
 --		address_sig <= "001000";
-		address_sig <= std_logic_vector(Xb(15 downto 10));
+		address_sig <= Xb_int(17 downto 12);
 		
+		y0_middle <= Xa * (unsigned("000000000000000000" & Xb_look & "000000"));
+		y0_int <= y0_middle(53 downto 18);
 		
-		-- --Calc Guess
-		if(check = '1') then--Even
-			y_out_sig <= "000000000000000000000000000000000000000000000000000000000000" & (Xa * signed(Xb_look));
-		else			--Odd
-			y_out_sig <= Xa * Xb * a;
+		--Calc Guess
+		
+		if(rising_edge(clk)) then	
+			if(check = '1') then
+				y0_next <= y0_int * roottwo;
+				y0_out_guess <= y0_next(53 downto 18);
+			else
+				y0_out_guess <= y0_int;
+			end if;
 		end if;
 		
+		
+		
 		-- Answer
-		y_out <= std_logic_vector(y_out_sig(35 downto 0));
+		y_out <= std_logic_vector(y0_out_guess);
 
 	end process;
 

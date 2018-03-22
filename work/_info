@@ -7,125 +7,44 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-dC:/Users/h92j874/Dropbox/School/EELE 466/Lab4
-Elab4_sqrt_top
-Z0 w1519762748
-Z1 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
-Z2 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
-Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
-Z4 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
-Z5 dC:/Users/h92j874/Desktop
-Z6 8C:/Users/h92j874/Desktop/Lab4_SQRT_TOP.vhd
-Z7 FC:/Users/h92j874/Desktop/Lab4_SQRT_TOP.vhd
-l0
-L6
-VIi0Tj7AEz3>fcfn:3R]^W1
-!s100 IWOGdN@?S0V;DA7ozN7_`0
-Z8 OV;C;10.5b;63
-32
-Z9 !s110 1520121824
-!i10b 1
-Z10 !s108 1520121824.000000
-Z11 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/h92j874/Desktop/Lab4_SQRT_TOP.vhd|
-Z12 !s107 C:/Users/h92j874/Desktop/Lab4_SQRT_TOP.vhd|
-!i113 1
-Z13 o-work work -2002 -explicit
-Z14 tExplicit 1 CvgOpt 0
-Alab4_sqrt_top_arch
-R1
-R2
-R3
-R4
-DEx4 work 13 lab4_sqrt_top 0 22 Ii0Tj7AEz3>fcfn:3R]^W1
-l32
-L14
-V`Wn>FW]mITcA?^J?oHGTJ2
-!s100 VMDAcVa1bhLVKmCkMXe231
-R8
-32
-R9
-!i10b 1
-R10
-R11
-R12
-!i113 1
-R13
-R14
-Elab4_sqrt_top_tb
-Z15 w1520121799
-Z16 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
-Z17 DPx4 ieee 16 std_logic_signed 0 22 C<aanc0R`<LWPSe[JYRP^3
-R2
-R1
-R3
-R4
-R5
-Z18 8C:/Users/h92j874/Desktop/Lab4_SQRT_TOP_TB.vhd
-Z19 FC:/Users/h92j874/Desktop/Lab4_SQRT_TOP_TB.vhd
-l0
-L7
-V]9h79KdD0H_m;GboL?Ge02
-!s100 cS3GPJXR?=<F0_6EOScN<0
-R8
-32
-R9
-!i10b 1
-R10
-Z20 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/h92j874/Desktop/Lab4_SQRT_TOP_TB.vhd|
-Z21 !s107 C:/Users/h92j874/Desktop/Lab4_SQRT_TOP_TB.vhd|
-!i113 1
-R13
-R14
-Alab4_sqrt_top_tb_arch
-R16
-R17
-R2
-R1
-R3
-R4
-DEx4 work 16 lab4_sqrt_top_tb 0 22 ]9h79KdD0H_m;GboL?Ge02
-l25
-L10
-VHad??U=6_@D>nN:<=zmIg2
-!s100 >i4]8N`3H]Xl8blX<L[>k2
-R8
-32
-R9
-!i10b 1
-R10
-R20
-R21
-!i113 1
-R13
-R14
+Z0 dC:/Users/h92j874/Desktop/Lab4
+T_opt
+!s110 1521648735
+V2Io`U^lbXK9_2l1m0Gz`i2
+04 2 7 work y0 y0_arch 1
+=1-a0369fb9d966-5ab2845f-29b-5d8
+o-quiet -auto_acc_if_foreign -work work +acc
+tCvgOpt 0
+n@_opt
+OL;O;10.5c;63
 Elzc
-Z22 w1519756476
-R1
-R2
-R3
-R4
-R5
-Z23 8C:/Users/h92j874/Desktop/lzc.vhd
-Z24 FC:/Users/h92j874/Desktop/lzc.vhd
+Z1 w1521556814
+Z2 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+Z3 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z4 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z5 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+R0
+Z6 8C:/Users/h92j874/Desktop/Lab4/lzc.vhd
+Z7 FC:/Users/h92j874/Desktop/Lab4/lzc.vhd
 l0
 L6
 VN;T<5a[A[S`1KW0<X:GiX1
 !s100 k_bD?MO;9K3<QAg>:J1EP1
-R8
+Z8 OL;C;10.5c;63
 32
-R9
+Z9 !s110 1521648731
 !i10b 1
-R10
-Z25 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/h92j874/Desktop/lzc.vhd|
-Z26 !s107 C:/Users/h92j874/Desktop/lzc.vhd|
-!i113 1
-R13
-R14
+Z10 !s108 1521648731.000000
+Z11 !s90 -work|work|-2002|-explicit|-vopt|-stats=none|C:/Users/h92j874/Desktop/Lab4/lzc.vhd|
+Z12 !s107 C:/Users/h92j874/Desktop/Lab4/lzc.vhd|
+!i113 0
+Z13 o-work work -2002 -explicit
+Z14 tExplicit 1 CvgOpt 0
 Abehavioral
-R1
 R2
 R3
 R4
+R5
 DEx4 work 3 lzc 0 22 N;T<5a[A[S`1KW0<X:GiX1
 l53
 L14
@@ -136,139 +55,143 @@ R8
 R9
 !i10b 1
 R10
-R25
-R26
-!i113 1
+R11
+R12
+!i113 0
 R13
 R14
 Enewton
-Z27 w1519762670
-R1
-R2
+Z15 w1521558970
+Z16 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z17 DPx4 ieee 16 std_logic_signed 0 22 C<aanc0R`<LWPSe[JYRP^3
 R3
+R2
 R4
 R5
-Z28 8C:/Users/h92j874/Desktop/Newton.vhd
-Z29 FC:/Users/h92j874/Desktop/Newton.vhd
+R0
+Z18 8C:/Users/h92j874/Desktop/Lab4/Newton.vhd
+Z19 FC:/Users/h92j874/Desktop/Lab4/Newton.vhd
 l0
-L6
-V^a6MU3>0<jKV8YR3A^FIB2
-!s100 ^^`ai`dIiMJ=n<??Mo7NX1
+L7
+V0RGA2UEBLfFi?j:WnQbT63
+!s100 @Tb3Mcedg9OTY7Q_jBUeb1
 R8
 32
 R9
 !i10b 1
 R10
-Z30 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/h92j874/Desktop/Newton.vhd|
-Z31 !s107 C:/Users/h92j874/Desktop/Newton.vhd|
-!i113 1
+Z20 !s90 -work|work|-2002|-explicit|-vopt|-stats=none|C:/Users/h92j874/Desktop/Lab4/Newton.vhd|
+Z21 !s107 C:/Users/h92j874/Desktop/Lab4/Newton.vhd|
+!i113 0
 R13
 R14
 Anewton_arch
-R1
-R2
+R16
+R17
 R3
+R2
 R4
-DEx4 work 6 newton 0 22 ^a6MU3>0<jKV8YR3A^FIB2
-l17
-L15
-VK_bo[<e2;]YhP>bOZnAO?1
-!s100 oD5iB[^oglalWL^]3RoKO0
+R5
+DEx4 work 6 newton 0 22 0RGA2UEBLfFi?j:WnQbT63
+l31
+L16
+VmGiW`3CRET_>17TGmJPX83
+!s100 i^AIQVPQmH]Y?GELcQdC71
 R8
 32
 R9
 !i10b 1
 R10
-R30
-R31
-!i113 1
+R20
+R21
+!i113 0
 R13
 R14
 Erom
-R22
-Z32 DPx9 altera_mf 20 altera_mf_components 0 22 Sn8Ol<dGSW99iM6NfOU>g1
-R3
+Z22 w1521648502
+Z23 DPx9 altera_mf 20 altera_mf_components 0 22 T4<z`h6BL:_nTXI;4TFDa0
 R4
 R5
-Z33 8C:/Users/h92j874/Desktop/ROM.vhd
-Z34 FC:/Users/h92j874/Desktop/ROM.vhd
+R0
+Z24 8C:/Users/h92j874/Desktop/Lab4/ROM.vhd
+Z25 FC:/Users/h92j874/Desktop/Lab4/ROM.vhd
 l0
 L43
 VLB1=7E_RiZDf0]g:V:<Tj0
 !s100 a_E0@8lD;?DH>ZVj3^`G12
 R8
 32
-R9
+Z26 !s110 1521648732
 !i10b 1
-R10
-Z35 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/h92j874/Desktop/ROM.vhd|
-Z36 !s107 C:/Users/h92j874/Desktop/ROM.vhd|
-!i113 1
+Z27 !s108 1521648732.000000
+Z28 !s90 -work|work|-2002|-explicit|-vopt|-stats=none|C:/Users/h92j874/Desktop/Lab4/ROM.vhd|
+Z29 !s107 C:/Users/h92j874/Desktop/Lab4/ROM.vhd|
+!i113 0
 R13
 R14
 Asyn
-R32
-R3
+R23
 R4
+R5
 DEx4 work 3 rom 0 22 LB1=7E_RiZDf0]g:V:<Tj0
 l57
 L53
-VOc<0d9^9[OdZM6UhS`gP82
-!s100 badB<egZINXA90>8F4Te71
+Vd=B>AFGeeOHHIYb7OIARE2
+!s100 Z]ie`3FTGP4J71H1fWSYR1
 R8
 32
-R9
+R26
 !i10b 1
-R10
-R35
-R36
-!i113 1
+R27
+R28
+R29
+!i113 0
 R13
 R14
 Ey0
-Z37 w1520121716
+Z30 w1521579272
 R16
 R17
-R2
-R1
 R3
+R2
 R4
 R5
-Z38 8C:/Users/h92j874/Desktop/Y0.vhd
-Z39 FC:/Users/h92j874/Desktop/Y0.vhd
+R0
+Z31 8C:/Users/h92j874/Desktop/Lab4/Y0.vhd
+Z32 FC:/Users/h92j874/Desktop/Lab4/Y0.vhd
 l0
 L7
 V`R24<Sg?QQQ03N>n=MF]C1
 !s100 I3A8aP0=>?TzFTD;:E8gX0
 R8
 32
-R9
+R26
 !i10b 1
-R10
-Z40 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/h92j874/Desktop/Y0.vhd|
-Z41 !s107 C:/Users/h92j874/Desktop/Y0.vhd|
-!i113 1
+R27
+Z33 !s90 -work|work|-2002|-explicit|-vopt|-stats=none|C:/Users/h92j874/Desktop/Lab4/Y0.vhd|
+Z34 !s107 C:/Users/h92j874/Desktop/Lab4/Y0.vhd|
+!i113 0
 R13
 R14
 Ay0_arch
 R16
 R17
-R2
-R1
 R3
+R2
 R4
-Z42 DEx4 work 2 y0 0 22 `R24<Sg?QQQ03N>n=MF]C1
-l54
+R5
+DEx4 work 2 y0 0 22 `R24<Sg?QQQ03N>n=MF]C1
+l66
 L15
-Z43 VkIR02?H5ckoS7[T32QeS93
-Z44 !s100 AKM7hhB=NjX=N6F7G9IYQ2
+Vb=nWE8kOY;;oj5<zMT[iS0
+!s100 NgTkQ^eO4kFgCl=d2Z2<k2
 R8
 32
-R9
+R26
 !i10b 1
-R10
-R40
-R41
-!i113 1
+R27
+R33
+R34
+!i113 0
 R13
 R14

@@ -14,6 +14,7 @@ end Lab4_SQRT_TOP;
 architecture Lab4_SQRT_TOP_arch of Lab4_SQRT_TOP is
 
 	signal guess : std_logic_vector(35 downto 0); --Guess Output
+	signal y1,y2,y3,y4,y5,y6,y7 : std_logic_vector(35 downto 0);
 	
 	
 	component Y0
@@ -32,18 +33,24 @@ architecture Lab4_SQRT_TOP_arch of Lab4_SQRT_TOP is
 begin
 
 	
+
+	
 	G0 : Y0 PORT MAP (
 		clk 	=> clk,
 		x_in 		=> x,
 		y_out		=> guess
 	);
 	
-	N0 : Newton PORT MAP (
-		clk 	=> clk,
-		x_in		=> x,
-		y_in 		=> guess,
-		y_out		=> y
-	);
+	N0 : Newton PORT MAP(clk,x,guess,y1);
+	N1 : Newton PORT MAP(clk,x,y1,y2);
+	N2 : Newton PORT MAP(clk,x,y2,y3);
+	N3 : Newton PORT MAP(clk,x,y3,y4);
+	N4 : Newton PORT MAP(clk,x,y4,y5);
+	N5 : Newton PORT MAP(clk,x,y5,y6);
+	N6 : Newton PORT MAP(clk,x,y6,y7);
+
+	y <= y7;
+
 		
 
 

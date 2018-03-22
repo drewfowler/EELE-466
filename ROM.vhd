@@ -50,7 +50,7 @@ ENTITY ROM IS
 END ROM;
 
 
-ARCHITECTURE SYN OF rom IS
+ARCHITECTURE SYN OF ROM IS
 
 	SIGNAL sub_wire0	: STD_LOGIC_VECTOR (11 DOWNTO 0);
 
@@ -62,7 +62,7 @@ BEGIN
 		address_aclr_a => "NONE",
 		clock_enable_input_a => "BYPASS",
 		clock_enable_output_a => "BYPASS",
-		init_file => "../../Users/h92j874/Desktop/466/Lab4/rsqrt_table.mif",
+		init_file => "./rsqrt_table.mif",
 		intended_device_family => "Cyclone V",
 		lpm_hint => "ENABLE_RUNTIME_MOD=NO",
 		lpm_type => "altsyncram",
