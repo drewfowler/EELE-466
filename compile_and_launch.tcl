@@ -45,6 +45,6 @@ proc vsimmatlabsysobj {args} {
   lappend args [join $sllibarg]
   uplevel 1 [join $args]
 }
-vsimmatlabsysobj y0 -t 1ns -voptargs=+acc  -socket 64228;
-add wave y0/*;
+vsimmatlabsysobj lab4_sqrt_top -t 1ns -voptargs=+acc  -socket 59905;
+add wave lab4_sqrt_top/*;
 

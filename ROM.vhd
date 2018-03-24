@@ -40,38 +40,38 @@ USE ieee.std_logic_1164.all;
 LIBRARY altera_mf;
 USE altera_mf.altera_mf_components.all;
 
-ENTITY ROM IS
+ENTITY rom IS
 	PORT
 	(
-		address		: IN STD_LOGIC_VECTOR (5 DOWNTO 0);
+		address		: IN STD_LOGIC_VECTOR (7 DOWNTO 0);
 		clock		: IN STD_LOGIC  := '1';
-		q		: OUT STD_LOGIC_VECTOR (11 DOWNTO 0)
+		q		: OUT STD_LOGIC_VECTOR (17 DOWNTO 0)
 	);
-END ROM;
+END rom;
 
 
-ARCHITECTURE SYN OF ROM IS
+ARCHITECTURE SYN OF rom IS
 
-	SIGNAL sub_wire0	: STD_LOGIC_VECTOR (11 DOWNTO 0);
+	SIGNAL sub_wire0	: STD_LOGIC_VECTOR (17 DOWNTO 0);
 
 BEGIN
-	q    <= sub_wire0(11 DOWNTO 0);
+	q    <= sub_wire0(17 DOWNTO 0);
 
 	altsyncram_component : altsyncram
 	GENERIC MAP (
 		address_aclr_a => "NONE",
 		clock_enable_input_a => "BYPASS",
 		clock_enable_output_a => "BYPASS",
-		init_file => "./rsqrt_table.mif",
+		init_file => "rsqrt_table.mif",
 		intended_device_family => "Cyclone V",
 		lpm_hint => "ENABLE_RUNTIME_MOD=NO",
 		lpm_type => "altsyncram",
-		numwords_a => 64,
+		numwords_a => 256,
 		operation_mode => "ROM",
 		outdata_aclr_a => "NONE",
-		outdata_reg_a => "UNREGISTERED",
-		widthad_a => 6,
-		width_a => 12,
+		outdata_reg_a => "CLOCK0",
+		widthad_a => 8,
+		width_a => 18,
 		width_byteena_a => 1
 	)
 	PORT MAP (

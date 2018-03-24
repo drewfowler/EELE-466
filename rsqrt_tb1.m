@@ -9,13 +9,13 @@ function rsqrt_tb
 
 % HdlCosimulation System Object creation (this Matlab function was created
 % by the cosimWizard).
-rsqrt_hdl = hdlcosim_y0;            
+rsqrt_hdl = hdlcosim_lab4_sqrt_top;            
 
 % % Test N input values
-Nvalues = 5;%2^16;
+Nvalues = 15;%2^16;
 % 
 % % latency of component
-Nlatency = 5;
+Nlatency = 4;
 
 W = 36;
 F = 18; 
@@ -28,6 +28,7 @@ Fm = fimath('RoundingMethod'   ,'Floor',...
     'SumMode'                   ,'SpecifyPrecision',...
     'SumWordLength'             ,W,...
     'SumFractionLength'         ,F);
+
 for i=1:Nvalues
     %-----------------------------------------------------------------
     % Create our input vector, which must be a 
@@ -38,8 +39,8 @@ for i=1:Nvalues
     fixed_point_value    = randi([1 2^fixed_word_width-1],1,1);  % choose a random integer between [0 2^W-1] - Note: can't have a zero input....
     fixed_point_signed   = 0;  % unsiged = 0, signed = 1;
     fixed_point_fraction = 18;  % fraction width (location of binary point within word)
-    input_vector1 = fi(15, fixed_point_signed, fixed_word_width, fixed_point_fraction) % make the input a fixed point data type
-    y = fi(0, fixed_point_signed, fixed_word_width, fixed_point_fraction);
+    input_vector1 = fi(fixed_point_value, fixed_point_signed, fixed_word_width, fixed_point_fraction); % make the input a fixed point data type
+    f = fi(0, fixed_point_signed, fixed_word_width, 18);
     input_history{i} = input_vector1;  % capture the inputs 
     
     %-----------------------------------------------------------------
@@ -51,7 +52,11 @@ for i=1:Nvalues
     % where the inputs can be created by the fi() function.
     %-----------------------------------------------------------------
     for j = 1:Nlatency  % run for Nlatency clock cycles so that the answer will show up
-        y = step(rsqrt_hdl,input_vector1)
+        output_vector1 = step(rsqrt_hdl,input_vector1)
+        y = step(rsqrt_hdl,input_vector1);
+        f = 1 / sqrt(input_vector1);
+        per = 1 - y/f;
+        dif = f - y;
     end
     
     %-----------------------------------------------------------------
@@ -90,6 +95,8 @@ end
     %------------------------------------------------------
     
 % end
+
+for i=1:Nvalues
 
 
 
