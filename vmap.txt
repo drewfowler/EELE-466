@@ -1,1 +1,1 @@
-vmap altera_mf C:/Users/h92j874/Desktop/Lab4/simlib/vhdl_libs/altera_mf
+vmap altera_mf C:/Users/h92j874/Desktop/466/EELE-466-Lab4/simlib/vhdl_libs/altera_mf
