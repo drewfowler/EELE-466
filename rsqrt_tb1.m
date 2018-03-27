@@ -1,6 +1,6 @@
 function rsqrt_tb
 
-      
+
 %------------------------------------------------------------
 % Note: it appears that the cosimWizard needs to be re-run if
 % this is moved to a different machine (VHDL needs to be
@@ -9,16 +9,16 @@ function rsqrt_tb
 
 % HdlCosimulation System Object creation (this Matlab function was created
 % by the cosimWizard).
-rsqrt_hdl = hdlcosim_lab4_sqrt_top;            
+rsqrt_hdl = hdlcosim_lab4_sqrt_top;
 
 % % Test N input values
 Nvalues = 15;%2^16;
-% 
+%
 % % latency of component
 Nlatency = 4;
 
 W = 36;
-F = 18; 
+F = 18;
 
 Fm = fimath('RoundingMethod'   ,'Floor',...
     'OverflowAction'            ,'Wrap',...
@@ -31,18 +31,18 @@ Fm = fimath('RoundingMethod'   ,'Floor',...
 
 for i=1:Nvalues
     %-----------------------------------------------------------------
-    % Create our input vector, which must be a 
+    % Create our input vector, which must be a
     % fixed-point data type.  The word width of the fixed point data type
     % must match the width of the std_logic_vector input.
     %-----------------------------------------------------------------
     fixed_word_width     = 36;  % width of input to component
-    fixed_point_value    = randi([1 2^fixed_word_width-1],1,1);  % choose a random integer between [0 2^W-1] - Note: can't have a zero input....
+    fixed_point_value    = randi([1 2^fixed_word_width-1],1,1);  % choose a random integer between [0 2^W-1] - Note: cant have a zero input....
     fixed_point_signed   = 0;  % unsiged = 0, signed = 1;
     fixed_point_fraction = 18;  % fraction width (location of binary point within word)
     input_vector1 = fi(fixed_point_value, fixed_point_signed, fixed_word_width, fixed_point_fraction); % make the input a fixed point data type
     f = fi(0, fixed_point_signed, fixed_word_width, 18);
-    input_history{i} = input_vector1;  % capture the inputs 
-    
+    input_history{i} = input_vector1;  % capture the inputs
+
     %-----------------------------------------------------------------
     % Push the input(s) into the component using the step function on the
     % system object lzc_hdl
@@ -58,14 +58,14 @@ for i=1:Nvalues
         per = 1 - y/f;
         dif = f - y;
     end
-    
+
     %-----------------------------------------------------------------
     % Save the outputs (which are fixed-point objects)
     %-----------------------------------------------------------------
     %output_history{i} = output_vector1  % capture the output
     %y = output_vector1  % capture the output
-    
-    
+
+
 end
 %-----------------------------------------------------------------
 % Display the captured I/O
@@ -87,16 +87,22 @@ end
 % error_index = 1;
 % error_case  = [];
 % for i=1:Nvalues
-%     in1  = input_history{i};  
+%     in1  = input_history{i};
 %     out1 = output_history{i+latency};  % get the output associated with current output
     %------------------------------------------------------
-    % Perfom the comparison with the "true" output 
+    % Perfom the comparison with the "true" output
     % have matlab compute what the answer should be
     %------------------------------------------------------
-    
+
 % end
 
 for i=1:Nvalues
+
+	if(input_history{i=latency} == output_history{i})
+	{
+	
+	}
+
 
 
 
